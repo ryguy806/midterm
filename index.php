@@ -5,21 +5,18 @@ error_reporting(E_ALL);
 
 session_start();
 
-require ("vendor/autoload.php");
+require_once('vendor/autoload.php');
 
 $f3 = Base::instance();
 
-$f3->route('GET /', function (){
+$f3->set('options', array('This midterm is easy', 'I like midterms', 'Detective Pikachu was great!'));
 
-    //default route
-    $view = new Template();
-    echo $view->render('views/home.html');
+$f3->route('GET /', function() {
+    echo "<h1>Midterm Survey</h1>";
+    echo "<a href='survey'>Take my survey</a>";
 });
 
-$f3->route('GET|POST /survey', function ($f3){
-
-    $options = array('This midterm is easy', 'I like midterms', 'Detective Pikachu was great!');
-    $f3->set('options', $options);
+$f3->route('GET|POST /survey', function ($f3) {
 
     if(!empty($_POST)){
 
@@ -39,10 +36,10 @@ $f3->route('GET|POST /survey', function ($f3){
     echo $view->render('views/form1.html');
 });
 
-$f3->route('GET|POST /summary', function (){
-
-    $view = new Template();
-    echo $view->render('views/results.html');
-});
+//$f3->route('GET|POST /summary', function (){
+//
+//    $view = new Template();
+//    echo $view->render('views/results.html');
+//});
 
 $f3->run();

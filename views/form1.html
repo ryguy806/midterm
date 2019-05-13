@@ -9,13 +9,16 @@
 
     <form method="post" action="#">
         <label for="name">Name
-            <input type="text" id="name" name="name">
+            <input type="text" id="name" name="name" value="{{@name}}">
         </label>
         <br>
         <p>Check all that apply</p>
         <br>
-        <repeat group="{{@options}}" value="{{@option}}">
-            <input type="checkbox" name="options[]" value="{{@option}}">{{@option}}
+        <repeat group="{{ @options }}" value="{{ @option }}">
+            <input type="checkbox" name="options[]" value="{{@option}}">
+                 <check if="{{ !empty(@option) && in_array(@options, @option) }}">
+                    checked="checked"
+                 </check>{{ @option }}<br>
         </repeat>
         <input type="submit" value="Submit">
     </form>
