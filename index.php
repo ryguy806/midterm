@@ -16,9 +16,11 @@ $f3->route('GET /', function (){
     echo $view->render('views/home.html');
 });
 
-$f3->route('GET|POST /survey', function (){
+$f3->route('GET|POST /survey', function ($f3){
 
+    $options = array('This midterm is easy', 'I like midterms', 'Detective Pikachu was great!');
 
+    $f3->set('options', $options);
 
     //default route
     $view = new Template();

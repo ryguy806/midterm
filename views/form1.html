@@ -5,6 +5,19 @@
     <title>Form 1</title>
 </head>
 <body>
+    <h1>Midterm Survey</h1>
 
+    <form>
+        <label for="name">Name
+            <input type="text" id="name" name="name">
+        </label>
+        <br>
+        <p>Check all that apply</p>
+        <br>
+        <repeat group="{{@options}}" value="{{@option}}">
+            <input type="checkbox" name="options[]" value="{{@option}}">{{@option}}
+        </repeat>
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>
