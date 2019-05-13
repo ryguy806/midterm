@@ -6,21 +6,18 @@
 </head>
 <body>
     <h1>Midterm Survey</h1>
-
-    <form method="post" action="#">
-        <label for="name">Name
-            <input type="text" id="name" name="name" value="{{@name}}">
-        </label>
-        <br>
-        <p>Check all that apply</p>
-        <br>
-        <repeat group="{{ @options }}" value="{{ @option }}">
-            <input type="checkbox" name="options[]" value="{{@option}}">
-                 <check if="{{ !empty(@option) && in_array(@options, @option) }}">
-                    checked="checked"
-                 </check>{{ @option }}<br>
-        </repeat>
-        <input type="submit" value="Submit">
-    </form>
+    <div id="form">
+        <form method="post" action="#">
+            <label for="name">Name
+                <input type="text" id="name" name="name" value="{{@name}}">
+            </label><br>
+            <p>Check all that apply</p><br>
+            <div id="options">
+                <input type="checkbox" name="options[]" value="option1"> Option1
+                <input type="checkbox" name="options[]" value="option2">
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 </body>
 </html>

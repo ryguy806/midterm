@@ -6,6 +6,25 @@
 </head>
 <body>
     <h1>Midterm Survey</h1>
-    <a href="/survey">Take my midterm</a>
+    <div id="form">
+        <form method="post" action="#">
+            <label for="name">Name
+                <input type="text" id="name" name="name" value="{{@name}}" required>
+            </label><br>
+            <p>Check all that apply</p><br>
+                <repeat group="{{ @options }}" value="{{ @option }}">
+                  <label>
+                      <input type="checkbox" name="selections[]" value="{{ @option }}"
+                           <check if="{{ !empty(@options) && in_array(@option, @options) }}"> checked="checked" </check>
+                      >{{ @option }}
+                    </label>
+                    <br>
+                </repeat>
+                <check if="{{empty(@selections)}}">
+                    <p>Please choose at least one.</p>
+                </check>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 </body>
 </html>
